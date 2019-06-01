@@ -131,7 +131,7 @@ func main() {
 
 	clearScreen()
 	printTheMan(missedCount)
-    printWord(revealWord)
+	printWord(revealWord)
 	fmt.Println("\nYou've guessed:", guesses)
 
 	for fmt.Print("\n=> "); scanner.Scan(); fmt.Print("\n=> ") {
@@ -167,7 +167,7 @@ func main() {
 		revealWord = string(tmpRevealWord)
 		printWord(revealWord)
 		if !revealed && missedCount == maxMissCount {
-            printWord(guessWord)
+			printWord(guessWord)
 			fmt.Println("\nYou lose!")
 			return
 		}
