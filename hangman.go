@@ -10,6 +10,8 @@ import (
 	"strconv"
 	"strings"
 	"time"
+
+    "github.com/gobuffalo/packr"
 )
 
 const (
@@ -74,15 +76,15 @@ func clearScreen() {
 }
 
 func readLines(filename string) []string {
-	wordsFile, err := os.Open(filename)
-	if err != nil {
-		log.Fatal(err)
-	}
-	defer wordsFile.Close()
-	scanner := bufio.NewScanner(wordsFile)
+    box := packr.NewBox("./assets")
+    s, err := box.FindString(filename)
+    if err != nil {
+        log.Fatal(err)
+    }
+
 	lines := make([]string, 0)
-	for scanner.Scan() {
-		lines = append(lines, scanner.Text())
+    for _, line := range strings.Split(s, "\n") {
+		lines = append(lines, line)
 	}
 	return lines
 }
